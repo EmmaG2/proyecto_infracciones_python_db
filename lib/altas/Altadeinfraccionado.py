@@ -1,5 +1,8 @@
-def ejecutar_altadeinfraccionado(cursor, conn):
-    #Codigo_Infraccionado = int(input("Ingrese el codigo del infraccionado: "))
+import sqlite3
+
+def crearAltaInfraccionado(conn, cursor):
+    
+    # Codigo_Infraccionado = int(input("Ingrese el codigo del infraccionado: "))
     Nombre_Infraccionado = input("Ingrese el nombre del infraccionado: ")
     Edad = int(input("Ingrese la edad del infraccionado: "))
     Placa_vehicular = input("Ingrese la placa vehicular del infraccionado: ")
@@ -15,6 +18,5 @@ def ejecutar_altadeinfraccionado(cursor, conn):
                     (Nombre_Infraccionado, Edad, Placa_vehicular,Tipo_Infraccion, Dia_Infraccion, Hora_Infraccion, Codigo_Policia))
 
     conn.commit()
-    conn.close()
 
 

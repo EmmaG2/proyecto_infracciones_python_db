@@ -1,19 +1,14 @@
-import sqlite3
+def crearInfraccion(conexion, cursor):
+    Tipo_Infraccion = input("Ingrese el tipo de infraccion: ")
+    Monto = float(input("Ingrese el monto: "))
 
-conexion = sqlite3.connect("Infracciones.db")
-cursor = conexion.cursor()
+    cursor.execute("""
+                    INSERT INTO Infraccion (Tipo_Infraccion, Monto)
+                    VALUES (?, ?) """,
+                    (Tipo_Infraccion, Monto))
 
-Tipo_Infraccion = input("Ingrese el tipo de infraccion: ")
-Monto = float(input("Ingrese el monto: "))
+    conexion.commit()
 
-cursor.execute("""
-                   INSERT INTO Infraccion (Tipo_Infraccion, Monto)
-                   VALUES (?, ?) """,
-                   (Tipo_Infraccion, Monto))
-
-conexion.commit()
-conexion.close()
-
-print("Infraccion agregada con exito.")
+    print("Infraccion agregada con exito.")
 
 

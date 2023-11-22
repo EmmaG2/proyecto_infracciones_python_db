@@ -1,24 +1,19 @@
-import sqlite3
-from datetime import datetime
+def getReporteDeMultas(conexion, cursor):
+    print("Ejecutando Reporte de infracciones")
 
+    opcion = -1
 
-print("Ejecutando Reporte de infracciones")
-
-conexion = sqlite3.connect("Infracciones.db")
-cursor = conexion.cursor()
-
-
-def menu():
-    print("1: Reporte completo de multas realizadas")
-    print("2: Multas por oficial")
-    print("3: Total de dinero recaudado por fecha")
-
-if __name__ == "__main__":
-    while True:
+    def menu():
+        print("1: Reporte completo de multas realizadas")
+        print("2: Multas por oficial")
+        print("3: Total de dinero recaudado por fecha")
+        print("0: Salir")
+        
+    while opcion != 0:
         menu()
-        opcion = input("Seleccione una opcion: ")
+        opcion = int(input("Seleccione una opcion: "))
     
-        if opcion == "1":
+        if opcion == 1:
             fecha = input ("Ingrese fecha: ")
                         
             cursor.execute("SELECT * FROM Multas WHERE Dia_infraccion =?", (fecha,))
@@ -26,7 +21,7 @@ if __name__ == "__main__":
             print(infracciones)
         
             
-        elif opcion == "5":
+        elif opcion == 5:
             break
         else:
             print("Opcion no valida. Por favor seleccione una opcion valida")
